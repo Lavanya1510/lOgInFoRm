@@ -12,21 +12,46 @@ export class Register extends Component {
 
       };
      
-      handleChange = (event) => {
-      
-       
-        
-      };
+      handlePassword =(e) => {
+      this.setState({
+        password: e.target.value,
+        conpass: e.target.value
+      });
      
-      handleFormSubmit = () => {};
-
-      handleFormSubmit = () => {
-        const { user, email, mobno } = this.state;
-        localStorage.setItem('email', email);
-        localStorage.setItem('mobno', mobno);
+      if(this.state.password === this.state.conpass)
+       {
+         return (true)
+       }
+       else{
+        alert('password doesnt match')
+        return (false)
         
-       
-      };
+       }
+         
+     }
+     
+    handleFormSubmit = (e) => {
+   
+      e.preventDefault();
+      
+      confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure to do this?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => alert('You\'ve been registered successfully')
+          },
+          {
+            label: 'No',
+            // onClick: () => alert('We\'re sorry for your inconvenience!')
+          }
+        ]
+      });
+      // console.log('hello');
+   
+    };
+
 
      
       render() { /*...*/ }
@@ -52,27 +77,27 @@ export class Register extends Component {
                      <form class="my-5">
                      <div class="form-group">
                          <label class="form-label">Your name</label>
-                         <input type="text" class="form-control" name="user" onChange={this.handleChange} />
+                         <input type="text" class="form-control" name="user"  />
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Your email</label>
-                         <input type="text" class="form-control" name="email" onChange={this.handleChange}/>
+                         <input type="text" class="form-control" name="email" />
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Your Mobile Number</label>
-                         <input type="text" class="form-control" name="mobno" onChange={this.handleChange} />
+                         <input type="text" class="form-control" name="mobno" />
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Password</label>
-                         <input type="password" class="form-control" name="Password" onChange={this.handleChange}/>
+                         <input type="password" class="form-control" name="Password" onChange={this.handlePassword}/>
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Confirm Password</label>
-                         <input type="password" class="form-control" name="conpass" onChange={this.handleChange}/>
+                         <input type="password" class="form-control" name="conpass" onChange={this.handlePassword}/>
                          <div class="clearfix"></div>
                      </div>
                      <button type="submit" class="btn btn-primary btn-block mt-4" onSubmit={this.handleFormSubmit.bind(this)}>Sign Up</button>
