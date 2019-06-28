@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 export class Register extends Component {
 
 
